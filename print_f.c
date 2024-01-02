@@ -4,39 +4,40 @@ int _printf(const char *format, ...)
 {
 int nchars = 0;
 va_list list_of_args;
+const char *frmt = format;
 
 if (format == NULL)
 return (-1);
 
 va_start(list_of_args, format);
 
-while (*format)
+while (*frmt)
 {
-if (*format != '%')
+if (*frmt != '%')
 {
-write(1, format, 1);
+write(1, frmt, 1);
 nchars++;
 }
 else
 {
-format++;
-if (*format == '\0')
+frmt++;
+if (*frmt == '\0')
 break;
 
-if (*format == '%')
+if (*frmt == '%')
 {
-write(1, format, 1);
+write(1, &frmt, 1);
 nchars++;
 }
 
-else if (*format == 'c')
+else if (*frmt == 'c')
 {
 char c = va_arg(list_of_args, int);
 write(1, &c, 1);
 nchars++;
 }
 
-else if (*format == 's')
+else if (*frmt == 's')
 {
 char *str = va_arg(list_of_args, char*);
 int str_len = 0;
@@ -54,7 +55,7 @@ nchars += str_len;
 }
 }
 
-format++;
+frmt++;
 
 }
 
