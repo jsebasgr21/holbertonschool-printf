@@ -6,7 +6,7 @@ int nchars = 0;
 va_list list_of_args;
 const char *frmt = format;
 
-if (format == NULL || format[0] == '%' && format[1] =='\0')
+if (format == NULL || (format[0] == '%' && format[1] =='\0'))
 return (-1);
 
 va_start(list_of_args, format);
@@ -53,6 +53,9 @@ str_len++;
 write(1, str, str_len);
 nchars += str_len;
 }
+write(1, "%", 1);
+write(1, frmt, 1);
+nchars++;
 }
 
 frmt++;
