@@ -53,7 +53,7 @@ str_len++;
 write(1, str, str_len);
 nchars += str_len;
 }
-write(1, "%", 1);
+frmt--;
 write(1, frmt, 1);
 nchars++;
 }
