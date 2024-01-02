@@ -23,23 +23,23 @@ if(*format != '%')
 else
 {
     format++;
-    if(format == '\0')
+    if(*format == '\0')
         break;
 
-    if(format == '%')
+    if(*format == '%')
     {
         write(1, format, 1);
         nchars++;
     }
 
-    else if(format == 'c')
+    else if(*format == 'c')
     {
         char c = va_arg(list_of_args, int);
         write(1, &c, 1);
         nchars++;
     }
 
-    else if(format == 's')
+    else if(*format == 's')
     {
         char *str = va_arg(list_of_args, char*);
         int str_len = 0;
