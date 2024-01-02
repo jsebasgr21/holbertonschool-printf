@@ -3,30 +3,60 @@
 int _printf(const char *format, ...)
 {
 int nchars = 0;
+int num;
+int str_len;
 
 va_list list_of_args;
 
 if(format == NULL)
-return (-1);
+    return (-1);
 
 va_start(list_of_args, format);
 
 while(*format)
 {
-if(*format != '%')
+if(*format != '%') /*if format is not the sign format */
 {
-write(1, format, 1);
+    write(1, format, 1);
+    nchars++;
 }
-else
+else //if format is %
 {
+    format++; //check the next character
+    if(format == '\0')
+        break;
+
+    if(format == '%') //if its double %%
+    {
+        write(1, format, 1);
+        nchars++;
+    }
+
+    else if(format == 'c')
+    {
+        char c = va_arg(list_of_args, int);
+        write(1, &c, 1);
+        nchars++;
+    }
+
+    else if(format == 's')
+    {
+        char *str = va_arg(list_of_args, char*);
+        int str_len = 0;
+
+        while(str[str_len] != '\0')
+        str_len++;
+
+        write(1, str, str_len);
+        nchars += str_len;
+    }
+}
+
 format++;
-}
-if(format == 'c')
-{}
-if(format == 's')
-{}
-if(format == '%')
-{}
 
 }
+
+va_end(list_of_args);
+
+return (nchars);
 }
