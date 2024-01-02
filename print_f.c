@@ -15,18 +15,18 @@ va_start(list_of_args, format);
 
 while(*format)
 {
-if(*format != '%') /*if format is not the sign format */
+if(*format != '%')
 {
     write(1, format, 1);
     nchars++;
 }
-else //if format is %
+else
 {
-    format++; //check the next character
+    format++;
     if(format == '\0')
         break;
 
-    if(format == '%') //if its double %%
+    if(format == '%')
     {
         write(1, format, 1);
         nchars++;
