@@ -26,7 +26,7 @@ break;
 
 if (*frmt == '%')
 {
-write(1, &frmt, 1);
+write(1, frmt, 1);
 nchars++;
 }
 
