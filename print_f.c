@@ -3,8 +3,6 @@
 int _printf(const char *format, ...)
 {
 int nchars = 0;
-int num;
-int str_len;
 
 va_list list_of_args;
 
