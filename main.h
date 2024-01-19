@@ -7,5 +7,6 @@
 #include <unistd.h>
 
 int _printf(const char *format, ...);
+int formatito(char formato, va_list list_of_args);
 
 #endif
