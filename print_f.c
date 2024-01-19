@@ -25,7 +25,9 @@ else
 frmt++;
 nchars += formatito(*frmt, list_of_args);
 if (*frmt == '%' || *frmt == 'c' || *frmt == 's')
-formatito(*format, list_of_args);
+{
+
+}
 else
 {
 frmt--;
@@ -34,7 +36,7 @@ nchars++;
 }
 frmt++;
 }
-va_end(list_of_args);
 }
+va_end(list_of_args);
 return (nchars);
 }
