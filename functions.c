@@ -6,7 +6,7 @@ int nchars = 0;
 
 if (formato == '%')
 {
-write(1, formato, 1);
+write(1, &formato, 1);
 nchars++;
 }
 
