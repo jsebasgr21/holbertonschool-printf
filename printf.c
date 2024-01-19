@@ -18,6 +18,7 @@ while (*frmt)
 if (*frmt != '%')
 {
 write(1, frmt, 1);
+frmt++;
 nchars++;
 }
 else
